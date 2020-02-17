@@ -1,0 +1,135 @@
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Food Adda</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>  
+      {{#if customer}}    
+      <li><a href="/changepasscust">Change password</a></li>
+      <li><a href="/viewordercust">Orders</a></li>
+      {{/if}}
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+    <li><a href="/viewcart"><span class="glyphicon glyphicon"></span>View Cart</a></li>
+    {{#if customer}}
+      <!--li><a href="/viewcart"><span class="glyphicon glyphicon"></span>View Cart</a></li-->
+      <li><a href="/custlogout"><span class="glyphicon glyphicon-user-log-out"> </span>
+      Logout</a></li>
+      {{else}}
+      <li><a href="/custsignup"><span class="glyphicon glyphicon-user"> </span>
+      Signup</a></li>
+      <li><a href="custlogin"><span class="glyphicon glyphicon-log-in"> </span>
+      Login</a></li>
+      {{/if}}
+      
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<div class="container">
+
+{{#if msg}}
+<div class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{msg}}</strong>
+    </div>
+    {{/if}}
+
+<div class="row" id="" >
+{{#each product}}
+  <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 box" id="" align="center">
+    <form action="addtocart" method="post">
+      <img src="{{this.imagename}}" width="150" height="150" align="center" name="imagename">
+
+      <input type="text" name="pname" value="{{this.name}}">  
+
+      <textarea name="pdesc">{{this.description}}</textarea>
+      
+       <label align="left">&#8377 {{this.price}}<label>
+       <input type="hidden" name="price"value="{{this.price}}" readonly>
+
+      <label>Quantity</label> <input type="number" name="quantity" value="1">
+     <input type="submit" value="Add to cart">
+    </form>
+  </div>
+  {{/each}}
+</div> 
+</div>
+
+
+</body>
+
+
+<style type="text/css">
+
+  #id1{
+       border-style: solid;
+       border-color: black;
+       border-width: 2px;
+       }
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+      
+       }
+ #id2{
+      margin-left: 10px;
+      margin-right: 10px;
+ }
+ input[name=pname]
+    {
+    border-style: solid;
+    border-color: white;
+    font-size: 12pt;
+    color: blue;
+    }
+    textarea
+    {
+    border-style: solid;
+    border-color: white;
+    color: grey;
+    }
+ 
+  input[name=price]
+    {
+    border: 1px;
+    border-style: solid;
+    border-color: white;
+    width: 20%;
+    height: 2em;
+    color: blue;
+    }
+ input[name=quantity]
+    {
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    width: 20%;
+    height: 1.5em;
+    }
+  label{
+  text-align: left;
+}
+
+</style>

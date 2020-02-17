@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Food Adda</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">View All Products</a></li>
+      <li><a href="/home">Home</a></li>
+
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/addnewpro">Add new products</a></li>
+          <li><a href="/viewallpro">View all products</a></li>
+          
+        </ul>
+      </li>
+
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Orders <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/viewcustomeradmin">View all customers</a></li>
+          <li><a href="/pendingorderadmin">Pending Orders</a></li>
+          <li><a href="/orderhistoryadmin">Order History</a></li>
+        </ul>
+      </li>
+      
+      <li><a href="/changepassadmin">Change password</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      
+      <li><a href="/adminlogout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container">
+  <h2>View all Products</h2>
+  {{msg}} 
+  {{#if msg}}
+    <div class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{msg}}</strong>
+    </div>
+    {{/if}}          
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each products}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.category}}</td>
+        <td>{{this.price}}</td>
+        <td>{{this.description}}</td>
+        <td><img src="{{this.imagename}}" height="50" width="50"></td>
+        <td><a href="deleteproduct?id={{this.id}}" onclick= "return confirm('Do you really want to delete this product ?')">Delete</a> </td>
+        <td><a href="updateproduct?id={{this.id}}">Update</a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  font-size: 15pt;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+  background-color: #00cc00;
+}
+
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+body{
+    background-color: blue;
+  }
+#id1{
+    background-color: skyblue;
+  width: 500px;
+  height: 500px;
+  margin: auto;
+  margin-top: 80px;
+    }
+input[type=password]:hover
+    {
+    border: 1px;
+    border-style: solid;
+    border-color: green;
+    width: 101%;
+    }
+input[type=text]:hover
+    {
+    border: 1px;
+    border-style: solid;
+    border-color: green;
+    width: 101%;
+    }
+h1{
+  padding-top:20px;
+  color: white;
+  font-size: 40px;
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Food Adda</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Change Password</a></li>
+
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/addnewpro">Add new products</a></li>
+          <li><a href="/viewallpro">View all products</a></li>
+          
+        </ul>
+      </li>
+
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Orders <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/viewcustomeradmin">View all customers</a></li>
+          <li><a href="/pendingorderadmin">Pending Orders</a></li>
+          <li><a href="/orderhistoryadmin">Order History</a></li>
+        </ul>
+      </li>
+      
+      <li><a href="/home">Home</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/adminlogout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<h1 align="center">Food Adda</h1>
+
+ 
+  <div class="container" id="id1">
+    <form action="/changepassa" method="post">
+    <h2>Change admin password here</h2> 
+
+    <div class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{msg}}</strong>
+    </div>
+
+
+    <label for="uname"><b>Login id</b></label>
+    <input type="text" placeholder="Enter Username" name="loginid" value="{{user}}" required>
+
+    <label for="psw"><b>Current Password</b></label>
+    <input type="password" placeholder="Enter current Password" name="cpass" required>
+
+    <label for="psw"><b>New Password</b></label>
+    <input type="password" placeholder="Enter new Password" name="npass" required>
+        
+    <button type="submit">Change password</button>
+    
+  
+  </form>
+  </div>
+
+
+</body>
+
+</html>

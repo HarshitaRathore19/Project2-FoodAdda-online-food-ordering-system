@@ -1,0 +1,15 @@
+
+<form action="/pay" method="post">
+<script src="https://checkout.stripe.com/checkout.js"
+class="stripe-button"
+data-key="pk_test_LoRkSQLctkrSadSs6kqQJGgW00aw8Pmqnp"
+<!--data-amount="500.00"-->
+data-name="Food Adda"
+data-description="Food adda restourent Indore"
+data-locale="auto"
+data-currency="inr"
+>
+</script>
+<input type="hidden" name="address" value="{{address}}" />
+<input type="hidden" name="amount" value="{{tamnt}}" />
+</form>

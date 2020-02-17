@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Food Adda</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Cart details</a></li>
+      <li><a href="/custhome">Home</a></li>
+      <li><a href="/viewordercust">Orders</a></li>      
+      <li><a href="/changepasscust">Change password</a></li>
+      
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/custlogout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+
+{{#if msg}}
+<div class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{msg}}</strong>
+    </div>
+    {{/if}}
+
+
+  <h2>View Cart Details</h2>           
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each product}}
+      <tr>
+        <td>{{#each data}}<img src="{{this.imagename}}" height="50" width="50"></td>
+        {{/each}}
+        <td>{{this.name}}</td>
+        <td>{{this.price}}</td>
+        <td>{{this.quantity}}</td>
+        <td>{{this.fprice}}</td>
+        <td><a href="deletecart?name={{this.name}}" onclick= "return confirm('Do you really want to delete this product ?')">Delete</a> </td>
+      </tr>
+      {{/each}}
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>GRAND TOTAL</td>
+        <td>{{gtotal}}</td>
+      </tr>
+    </tbody>  </table>
+    <form action="paymentaction" method="post">
+    <textarea rows="3" cols="30" placeholder="Please enter your current address" name="address" required></textarea>
+    <input type="hidden" value="{{gtotal}}" name="total">
+    <input type="submit" class="btn" value="Place order">
+  </form>
+</div>
+
+
+
+
+
+
+

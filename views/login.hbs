@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 15pt;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+  background-color: #00cc00;
+}
+
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+body{
+    background-color: #0059b3;
+  }
+#id1{
+    background-color: #99ccff;
+  width: 500px;
+  height: 420px;
+  margin: auto;
+  margin-top: 80px;
+    }
+input[type=password]:hover
+    {
+    border: 1px;
+    border-style: solid;
+    border-color: green;
+    width: 101%;
+    }
+input[type=text]:hover
+    {
+    border: 1px;
+    border-style: solid;
+    border-color: green;
+    width: 101%;
+    }
+h1{
+  padding-top:20px;
+  color: white;
+  font-size: 40px;
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Food Adda</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Login</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="signupform"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    </ul>
+  </div>
+</nav>
+
+<h1 align="center">Food Adda</h1>
+
+ 
+  <div class="container" id="id1">
+    <form action="/logincheck" method="post">
+    <h2>LOGIN</h2> 
+
+    {{#if msg}}
+    <div class="alert alert-danger alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{msg}}</strong>
+    </div>
+    {{/if}}
+
+
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="loginid" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+        
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  
+
+  <!--div class="container" style="background-color:#f1f1f1"-->
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  <!--/div-->
+  </form>
+  </div>
+<!--/form-->
+
+</body>
+
+</html>

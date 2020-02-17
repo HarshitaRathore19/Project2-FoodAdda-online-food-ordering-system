@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#uid").blur(function(){
+    var id=$("#uid").val();
+//    alert(id)
+
+    $.ajax({
+      url:  'Checkuserid',
+      data:"uid="+id,
+      type:'get',
+      success:function(response)
+      {
+  //      alert(response)
+        if(response.msg=="Already Exist")
+        $("#uid").val("");
+        $("#errmsg").html(id+" "+response.msg);
+        }
+     }); //AJAX end
+  }); //blur end
+}); //ready end
+</script>
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 15pt;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+  background-color: #00cc00;
+}
+
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+body{
+    background-color: green;
+  }
+#id1{
+    background-color: #99ccff;
+  width: 700px;
+  height: 600px;
+  margin: auto;
+  margin-top: 80px;
+    }
+input[type=password]:hover
+    {
+    border: 1px;
+    border-style: solid;
+    border-color: green;
+    width: 101%;
+    }
+input[type=text]:hover
+    {
+    border: 1px;
+    border-style: solid;
+    border-color: green;
+    width: 101%;
+    }
+h1{
+  padding-top:20px;
+  color: white;
+  font-size: 40px;
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Food Adda</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Signup</a></li>      
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="custlogin"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+    </ul>
+  </div>
+</nav>
+<h1 align="center">Food Adda</h1>
+
+  <div class="container" id="id1">
+    <form action="/csignup" method="post">
+  
+    <h2>SIGNUP Customer</h2>
+
+    {{#if msg}}
+    <div class="alert alert-danger alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{msg}}</strong>
+    </div>
+    {{/if}}
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter your full name" name="cname" required>
+
+    <label for="number"><b>Contact Number</b></label>
+    <input type="text" placeholder="Mobile number" name="cnumber" required>
+
+    <label for="address"><b>Address</b></label>
+    <input type="text" placeholder="Enter your complete address" name="caddress" required>
+
+    <label for="email"><b>Email id</b></label>
+    <input type="text" placeholder="Enter Username/email id" name="cemailid" id= required>
+    <div id="errmsg" color="red"></div>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="cpassword" required>
+        
+    <button type="submit">Save</button>
+  
+  
+
+  </form>
+  </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Food Adda</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Update products</a></li>
+      <li><a href="/home">Home</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+     
+      <li><a href="/adminlogout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  
+  <h2>Update products here</h2>
+  {{#if msg}}
+    <div class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{msg}}</strong>
+    </div>
+    {{/if}}
+  <form action="/updatepro"  method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="hidden" name="id" value="{{product._id}}">
+    </div>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" name="fname" value="{{product.name}}">
+    </div>
+    <div class="form-group">
+      <label for="sel1">Category:</label>
+  <select class="form-control" id="sel1" name="fcategory">
+    <option>{{product.category}}</option>
+    <option>Select category</option>
+    <option>Ready to eat</option>
+    <option>Ready to cook</option>
+    <option>Ready to drink</option>
+  </select>
+    </div>
+      <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" class="form-control" name="fprice" value="{{product.price}}">
+    </div>
+     <div class="form-group">
+  <label for="comment">Description:</label>
+  <textarea class="form-control" rows="4" id="comment" name="fdesc">{{product.description}}</textarea>
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroupFileAddon01">Update image</span>
+  </div>
+  <div class="custom-file">
+      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="file" value="{{product.imagename}}"> <img src="{{product.imagename}}" height="80" width="80">
+    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+  </div>
+</div>
+
+    <input type="submit" class="btn" value="Update">
+  </form>
+</div>
+<!--/body-->
+<!--/html-->
+<style type="text/css">
+.btn{
+  background-color: green;
+  color:white;
+}
+.btn:hover{
+  background-color: darkgreen;
+  color: black
+}
